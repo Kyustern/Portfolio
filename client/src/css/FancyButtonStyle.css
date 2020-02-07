@@ -1,0 +1,28 @@
+.fancyButton {
+    display: inline-block;
+    text-align: center;
+    color: white !important;
+    width: 10vw;
+    height: auto;
+    padding: auto;
+    transition-property: box-shadow, text-shadow;
+    transition-timing-function: cubic-bezier(.26,.54,.38,1);
+    transition-duration: 0.5s;
+    white-space: pre;
+    font-size:120%
+}
+
+.fancyButton:hover {
+    /* box-shadow : 1px 1px 6px white; */
+    text-shadow : 1px 1px 3px white;
+    cursor: pointer;
+}
+
+.selectedFancyButton {
+    color : red !important;
+}
+
+.InnerButtonText{
+    position: relative;
+    top: 40%;
+}

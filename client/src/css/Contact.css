@@ -1,0 +1,9 @@
+@media (max-width: 900px) {
+    input {
+        width: 100% !important;
+    }
+
+    textarea {
+        width: 100% !important;
+    }
+}

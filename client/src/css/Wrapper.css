@@ -1,0 +1,33 @@
+.Wrapper {
+    width: 100%;
+    height: auto;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#323438+0,000000+100 */
+    background: #323438; /* Old browsers */
+    background: -moz-linear-gradient(right,  #252629 0%, #000000 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(right,  #252629 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to left,  #252629 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#252629', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 50%));
+    /* grid-template-rows: 1fr; */
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+}
+
+.HeaderTitle {
+    color : #ededed;
+    text-shadow: 1px 1px 20px white;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding-left: 20px;
+}
+
+.ButtonRack {
+    display: flex;
+    flex-direction: row;
+    right: 0;
+    /* height: 100%; */
+    align-items: center;
+}
