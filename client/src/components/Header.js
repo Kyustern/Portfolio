@@ -83,7 +83,7 @@ const Header = () => {
                 <FancyButton text='Accueil' to='/' exact={true} />
                 <FancyButton text='Projets' to='/projets' />
                 <FancyButton text='Contact' to='/contact' />
-                <FancyButton text='Homework Folder' to='/nsfw' />
+                {/* <FancyButton text='Homework Folder' to='/nsfw' /> */}
             </ButtonRack>
 
         </Wrapper>

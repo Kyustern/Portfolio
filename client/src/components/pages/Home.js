@@ -19,14 +19,18 @@ const Home = () => {
         <div className='Wrapper'>
             <div className='Text'>
                 <h2>A propos de moi</h2>
-                Je suis Léon Tescher, un développeur web basé a Toulouse. Je suis spécialisé dans la création de sites internet et de <a href="https://en.wikipedia.org/wiki/Single-page_application">SPA</a>.<br></br>
+                Je suis Léon Tescher, un développeur web basé a Toulouse. Je suis spécialisé dans la création de sites internet et de <a href="https://en.wikipedia.org/wiki/Single-page_application">SPA</a>.
                 <br></br>
-                Actuellement diplômé d'un BTS, je compte faire du développement web mon métier.
+                <br></br>
+                Actuellement diplômé d'un BTS et ayant suivi une licence pro en dévellopement web, je continue d'apprendre de manière autonome a travers différente sources, telles que <a href="https://www.udemy.com/">Udemy</a> ou encore <a href="https://medium.com/">Medium</a>
             </div>
 
             <div className='Text2'>
                 <h2>Mes méthodes & savoir-faire</h2>
-                Dans le cadre de mes projets j'emploie majoritairement <a href="https://fr.wikipedia.org/wiki/JavaScript">JavaScript</a>, et notamment <a href="https://fr.reactjs.org/">ReactJS</a>.
+                Dans le cadre de mes projets j'emploie majoritairement <a href="https://fr.wikipedia.org/wiki/JavaScript">JavaScript</a>, et notamment <a href="https://fr.reactjs.org/">ReactJS</a> pour le front-end.
+                <br></br>
+                <br></br>
+                Pour le côté serveur, j'utilise <a href="https://expressjs.com/fr/">ExpressJS</a>, un framework permettant la création d'API REST avec <a href="https://nodejs.org/en/">NodeJS</a>
             </div>
 
             <SvgContainer className='Image2' height='auto'>

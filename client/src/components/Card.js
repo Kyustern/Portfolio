@@ -4,7 +4,7 @@ import Styled from 'styled-components'
 import SvgButton from './SvgButton'
 
 import SvgGithub from './svgr/Github'
-import SvgNotebook from './svgr/Notebook'
+import SvgWww from './svgr/Www'
 
 const Img = Styled.img`
     display: block;
@@ -81,26 +81,21 @@ const TagsContainer = Styled.div`
 
 //Actual component
 
-const Card = ({ img, text, title, isHosted, tags }) => {
+const Card = ({ img, text, title, isHosted, tags, width, repoUrl, hostingUrl }) => {
 
     return (
         <Wrapper>
-            <Img src={img} alt="" width="95%"></Img>
+            <Img src={img} alt="" width={width}></Img>
             <Title>{title}</Title>
             <Text>{text}</Text>
             <HiddenInfo>
                 <ButtonContainer>
-                    <SvgButton url="https://github.com/Kyustern/portfolio">
-                        <SvgGithub width='125px' height='100%' />
-                    </SvgButton>
-                    {isHosted ? <SvgButton><SvgNotebook width='120px' height='100%' /></SvgButton> : null}
+                    <SvgButton url={repoUrl}><SvgGithub width='125px' height='100%' /></SvgButton>
+                    {isHosted ? <SvgButton url={hostingUrl}><SvgWww width='120px' height='100%' /></SvgButton> : null}
                 </ButtonContainer>
                 <TagsContainer>
                         {
-                        //renderTags(tags)
-                            tags.map(({url, text}) => {
-                                return <a href={url} key={text}>{text}</a>
-                            })
+                            tags ? tags.map(({url, text}) => {return <a href={url} key={text}>{text}</a>}) : 'Aucun tag'
                         }
                 </TagsContainer>
             </HiddenInfo>
