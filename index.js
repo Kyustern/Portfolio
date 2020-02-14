@@ -9,7 +9,8 @@ require('dotenv').config()
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(express.static(__dirname + '/client/build'));
+// app.use(express.static(path.join(__dirname, '/client/build')));
 
 // const port = process.env.PORT || 80
 
@@ -31,8 +32,8 @@ let mailOptions = {
 app.post('/api/mailto', (req, res) => {
 
     const {text, from, first, last} = req.body
-//this is not indented because tabs are rendered in the string result
     const finalString =
+//this is not indented because tabs are rendered in the string result
 `${text}
 Sent by ${first} ${last}
 From ${from}`
@@ -62,11 +63,6 @@ From ${from}`
     })
 })
 
-//29janvier 10h30 -> cv, cni, carte vitale, carte de mutuelle, rib
-
 app.listen(process.env.PORT || 80, function () {
     console.log('Server listening')
 })
-
-//cni recto verso, carte vitale
-//mail : toulouse.2@proman-interim.com
