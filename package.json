@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "code . && concurrently \"nodemon index.js\" \"npm start --prefix ./client\"",
-    "prod-build": "npm install && cd client && npm run build && npm install && cd ../ && node index.js"
+    "prod-build": "npm install && cd client && npm install && npm run build && cd ../ && node index.js"
   },
   "author": "",
   "license": "ISC",
