@@ -12,6 +12,7 @@ const Wrapper = Styled.div`
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     column-gap: 20px;
     row-gap: 20px;
+    margin: auto;
 `
 
 const Projects = () => {

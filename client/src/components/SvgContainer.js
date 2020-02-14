@@ -8,15 +8,17 @@ const SvgContainer = ({ children, height }) => {
     align-items: center;
     overflow-x: scroll;
     overflow-y: hidden;
-    display: inline-block;
-    /* background-color: #1A1A1A; */
-    /* height: 200px; */
     width: 100%;
-    height: ${height};
+    /* height: ${height};*/
     white-space: nowrap;
     scrollbar-color: #1878d6 #1a1a1a;
     scrollbar-width: thin;
     grid-area: 2 / 1 / 3 / 3;
+    
+    @media (max-width: 900px) {
+        grid-area: 3 / 1 / 4 / 2;
+    }
+
     `
     return (
         <Wrapper>

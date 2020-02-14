@@ -29,7 +29,7 @@ const Home = () => {
                 Dans le cadre de mes projets j'emploie majoritairement <a href="https://fr.wikipedia.org/wiki/JavaScript">JavaScript</a>, et notamment <a href="https://fr.reactjs.org/">ReactJS</a>.
             </div>
 
-            <SvgContainer className='Image2'>
+            <SvgContainer className='Image2' height='auto'>
                 <SvgButton url='https://fr.wikipedia.org/wiki/HTML5'>
                     <SvgHtml5 height="100%" width="180px" />
                 </SvgButton>
