@@ -11,6 +11,8 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+// const port = process.env.PORT || 80
+
 const mailTransporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -62,7 +64,7 @@ From ${from}`
 
 //29janvier 10h30 -> cv, cni, carte vitale, carte de mutuelle, rib
 
-app.listen(3001, function () {
+app.listen(process.env.PORT || 80, function () {
     console.log('Server listening on port 3001')
 })
 
