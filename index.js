@@ -9,7 +9,7 @@ require('dotenv').config()
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, '/client/build')));
 
 // const port = process.env.PORT || 80
 
@@ -65,7 +65,7 @@ From ${from}`
 //29janvier 10h30 -> cv, cni, carte vitale, carte de mutuelle, rib
 
 app.listen(process.env.PORT || 80, function () {
-    console.log('Server listening on port 3001')
+    console.log('Server listening')
 })
 
 //cni recto verso, carte vitale
