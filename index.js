@@ -63,6 +63,10 @@ From ${from}`
     })
 })
 
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '/client/build/', 'index.html'))
+})
+
 app.listen(process.env.PORT || 80, function () {
     console.log('Server listening')
 })
