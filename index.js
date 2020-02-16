@@ -6,7 +6,8 @@ const chalk = require('chalk')
 const path = require('path')
 require('dotenv').config()
 
-const port = process.env.PORT || 80;
+// const port = process.env.PORT || 80;
+const port = 80
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
