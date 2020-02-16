@@ -9,16 +9,10 @@ require('dotenv').config()
 // const port = process.env.PORT || 80;
 const port = 3000
 
-process
-  .on('SIGTERM', shutdown('SIGTERM'))
-  .on('SIGINT', shutdown('SIGINT'))
-  .on('uncaughtException', shutdown('uncaughtException'));
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'client/build')))
-// app.use(express.static(path.join(__dirname, '/client/build')));
 
 // const port = process.env.PORT || 80
 
