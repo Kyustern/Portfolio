@@ -7,10 +7,10 @@ const useFormValidation = (initialState) => {
     const [mail, setMail] = useState(initialState.mail)
     const [message, setMessage] = useState(initialState.message)
     const [errors, setErrors] = useState({
-        first: true,
-        last: true,
-        mail: true,
-        message: true
+        first: false,
+        last: false,
+        mail: false,
+        message: false
     })
     const mailObject = {
         first: first,
