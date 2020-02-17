@@ -12,7 +12,7 @@ const port = process.env.PORT || 3001;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'client/build')))
+app.use(express.static(__dirname + '/client/build'))
 
 // const port = process.env.PORT || 80
 
