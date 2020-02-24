@@ -69,8 +69,8 @@ const Wrapper = Styled.div`
     }
 
     * :focus {
-        /* outline-color: transparent;
-        outline-style: none; */
+        outline-color: transparent;
+        outline-style: none;
     }
 `
 const Separator = Styled.div`

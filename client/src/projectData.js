@@ -9,7 +9,7 @@ const data = {
         title: "Portfolio",
         isHosted: true,
         repoUrl: "https://github.com/Kyustern/Portfolio",
-        hostingUrl: null,
+        hostingUrl: "https://portfolio-tescher-leon.herokuapp.com",
         tags: [
             {
                 "text":"ReactJS",

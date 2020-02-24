@@ -18,7 +18,6 @@ const Projects = () => {
 
     return (
         <Wrapper>
-
             {Object.values(data).map((iteration) => {
                 return (<Card
                     key='1'
