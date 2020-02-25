@@ -19,6 +19,7 @@ const useFormValidation = (initialState) => {
         text: message
     }
     //MAIL REGULAR EXPRESSION - it is declared here to avoid having it recreated on each inputs
+    // eslint-disable-next-line
     const mailRegExObj = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
 
     const reset = () => {
@@ -39,7 +40,7 @@ const useFormValidation = (initialState) => {
             default:
                 break;
         }
-        if (input.includes(` `) || input == (``)) {
+        if (input.includes(` `) || input === (``)) {
             setErrors(Object.assign(errors, { [key]: true }))
         }
         else {

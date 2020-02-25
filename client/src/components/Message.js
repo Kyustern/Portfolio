@@ -3,11 +3,11 @@ import Styled from 'styled-components'
 
 import Button from './Button'
 
-const Inner = Styled.div`
-    background-color: #df1515;
-    margin: auto;
-    font-size: 150%;
-`
+// const Inner = Styled.div`
+//     background-color: #df1515;
+//     margin: auto;
+//     font-size: 150%;
+// `
 
 const Message = ({ object, top, ClickProp, bckgColor }) => {
     const Inner = Styled.div`

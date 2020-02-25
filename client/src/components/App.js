@@ -41,6 +41,12 @@ const Main = Styled.div`
 
 const Wrapper = Styled.div`
 
+    @media screen and (max-device-width: 900px){
+    body{
+        -webkit-text-size-adjust: none;
+    }
+    }
+
 /* This wraps the entire application, so its kind of important */
 
     margin: 0;
