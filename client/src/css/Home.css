@@ -34,7 +34,7 @@
 
 .Text {
     display: inline-block;
-    font-size: 150%;
+    font-size: 100%;
     height: auto;
     padding: 20px;
     /* height: fit-content; */
@@ -46,7 +46,7 @@
 .Text2 {
     padding: 20px;
     display: inline-block;
-    font-size: 150%;
+    font-size: 100%;
     height: auto;
     margin: 0;
     /* background-color: #1A1A1A; */
