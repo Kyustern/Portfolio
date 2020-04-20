@@ -82,8 +82,9 @@ const useFormValidation = (initialState) => {
         value: message,
         onChange: e => { messageCheck(e.target.value) }
     }
-// return binds and errors
-return [firstBind, lastBind, mailBind, messageBind, errors, mailObject, reset]
+    // return binds and errors
+    
+    return [firstBind, lastBind, mailBind, messageBind, errors, mailObject, reset]
 }
 
 export default useFormValidation
