@@ -83,9 +83,9 @@ const Separator = Styled.div`
 
     background-color: #1878d6;
 
-    -webkit-box-shadow:0px 0px 81px 3px #1878d6 ;
-    -moz-box-shadow:0px 0px 81px 3px #1878d6 ;
-    box-shadow:0px 0px 81px 3px #1878d6 ;
+    /* -webkit-box-shadow:0px 0px 20px 0px #1878d6 ;
+    -moz-box-shadow:0px 0px 20px 0px #1878d6 ;
+    box-shadow:0px 0px 20px 0px #1878d6 ; */
 
     width: 100%;
     height: 0.2vh;

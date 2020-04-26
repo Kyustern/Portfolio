@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Styled from 'styled-components'
+import axios from 'axios'
 
 import Card from '../Card'
+import Lol from '../ActualSpinner'
 import data from '../../projectData'
 
 const Wrapper = Styled.div`
@@ -12,13 +14,26 @@ const Wrapper = Styled.div`
     column-gap: 20px;
     row-gap: 20px;
     margin: auto;
+    height: 100%;
 `
 
 const Projects = () => {
 
+    const [data, setData] = useState(null)
+
+    const getData = async () => {
+        const response = await axios.post('/api/getStuff')
+        console.log(response);
+        setData(response)
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
+
     return (
         <Wrapper>
-            {Object.values(data).map((iteration) => {
+            {/* {Object.values(data).map((iteration) => {
                 return (<Card
                     key='1'
                     img={iteration.image}
@@ -31,8 +46,9 @@ const Projects = () => {
                     repoUrl={iteration.repoUrl}
                     hostingUrl={iteration.hostingUrl}
                 />)
-            })
-            }
+            }) */}
+
+            <Lol></Lol>
         </Wrapper>
     )
 }
