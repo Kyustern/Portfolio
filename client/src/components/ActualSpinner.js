@@ -14,39 +14,44 @@ const Bar = Styled.div`
     background-color: white;
     margin: 1%;
     margin-top: 130px;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 100px;
+    opacity: 0.15;
 `
 
-const Spinner = () => {
+    const Spinner = () => {
 
-    const randomHeight = () => {
-        anime({
-            targets: '.moving',
-            // height: anime.stagger(
-            //     [anime.random(20, 140), 10], 
-            //     {from: 'center'}
-            // ),
-            height: () => { return anime.random(10, 120)},
-            delay: anime.stagger(100),
-            easing: 'easeInOutQuad',
-            duration: 400,
-            complete: randomHeight
-        });
+        const randomHeight = () => {
+            const animeInstance = anime({
+                targets: '.moving',
+                opacity: 1,
+                height: () => { return anime.random(25, 100) },
+                delay: anime.stagger(100),
+                easing: 'easeInOutQuad',
+                duration: 400,
+                loop: true,
+                autoplay: false,
+                direction: 'alternate'
+            });
+            return animeInstance
+        }
+
+        useEffect(() => {
+            randomHeight().play()
+        }, [])
+
+        useEffect(() => {
+            randomHeight().pause()
+        })
+
+        return (
+            <SpinnerWrapper>
+                <Bar className='moving'></Bar>
+                <Bar className='moving'></Bar>
+                <Bar className='moving'></Bar>
+            </SpinnerWrapper>
+        )
     }
 
-    useEffect(() => {
-        randomHeight()
-    }, [])
-
-    return (
-        <SpinnerWrapper>
-            <Bar className='moving'></Bar>
-            <Bar className='moving'></Bar>
-            <Bar className='moving'></Bar>
-        </SpinnerWrapper>
-    )
-}
-
-export default Spinner
+    export default Spinner

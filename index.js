@@ -1,23 +1,36 @@
-const apiRouter = require('./routes/index.js')
+// const lol = {
+//     décembre: "0",
+//     janvier: "226.78",
+//     février: "209.33",
+//     mars: "632.07‬",
+//     avril: 312.09
+// }
+
+//Routes import
+const getProjects = require('./routes/getProjects')
+const sendMail = require('./routes/sendMail')
 
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const nodemailer = require('nodemailer')
-const chalk = require('chalk')
 const path = require('path')
-require('dotenv').config()
 
 const port = process.env.PORT || 3001;
 // const port = 3000
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(bodyParser.json());
 
+app.use('/api', getProjects)
+app.use('/api', sendMail)
+
+//Static folder that contains the react build
 app.use(express.static(__dirname + '/client/build'))
+//Static folder that contains the images for the projects
+app.use(express.static(__dirname + '/public'))
 
-app.use('/api', apiRouter)
-
+//Serving the build on any request (*)
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 })

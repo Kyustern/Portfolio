@@ -1,10 +1,8 @@
 const express = require('express')
+const router = express.Router()
 const nodemailer = require('nodemailer')
 const chalk = require('chalk')
-const emoji = require('node-emoji')
-const mongodb = require('mongodb')
-
-const router = express.Router();
+require('dotenv').config()
 
 const mailTransporter = nodemailer.createTransport({
     service: 'gmail',
@@ -21,13 +19,7 @@ let mailOptions = {
     text: ''
 }
 
-router.post('/getStuff', (req, res) => {
-    setTimeout(() => {
-        res.send(emoji.get('coffee'))
-    }, 3000)
-})
-
-router.post('/mailto', (req, res) => {
+router.post('/sendMail', (req, res) => {
 
     const {text, from, first, last} = req.body
     const finalString =

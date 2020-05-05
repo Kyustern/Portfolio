@@ -152,7 +152,7 @@ const Contact = () => {
         if (Object.values(errors).every(innerEveryFunc)) {
             setServerResponse("")
             downUp.play()
-            const response = await axios.post('/api/mailto', mailObject)
+            const response = await axios.post('/api/sendMail', mailObject)
             
             setServerResponse(response.data.text)
 

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import SvgButton from './SvgButton'
 
@@ -81,11 +82,22 @@ const TagsContainer = Styled.div`
 
 //Actual component
 
-const Card = ({ img, text, title, isHosted, tags, width, repoUrl, hostingUrl }) => {
+const Card = ({ img, imgUrl, text, title, isHosted, tags, width, repoUrl, hostingUrl }) => {
+
+    // useEffect(() => {
+    //     console.log("Card -> imgUrl", imgUrl)
+    // }, [])
 
     return (
         <Wrapper>
-            <Img src={img} alt="" width={width}></Img>
+            <Img 
+            src={
+                imgUrl ? imgUrl : img
+            }
+                alt=""
+                width={width}>
+
+            </Img>
             <Title>{title}</Title>
             <Text>{text}</Text>
             <HiddenInfo>
@@ -94,9 +106,9 @@ const Card = ({ img, text, title, isHosted, tags, width, repoUrl, hostingUrl }) 
                     {isHosted ? <SvgButton url={hostingUrl}><SvgWww width='120px' height='100%' /></SvgButton> : null}
                 </ButtonContainer>
                 <TagsContainer>
-                        {
-                            tags ? tags.map(({url, text}) => {return <a href={url} key={text}>{text}</a>}) : 'Aucun tag'
-                        }
+                    {
+                        tags ? tags.map(({ url, text }) => { return <a href={url} key={text}>{text}</a> }) : 'Aucun tag'
+                    }
                 </TagsContainer>
             </HiddenInfo>
         </Wrapper>
