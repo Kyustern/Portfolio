@@ -118,7 +118,7 @@ const Contact = () => {
         message: ''
     })
 
-    const [firstBind, lastBind, mailBind, messageBind, errors, mailObject, reset] = useFormValidation({
+    const [firstBind, lastBind, mailBind, messageBind, errors, mailObject, errorMessageBind, reset] = useFormValidation({
         first: '',
         last: '',
         mail: '',
@@ -127,14 +127,6 @@ const Contact = () => {
     const [errorsTop, setErrorsTop] = useState('-100%')
 
     const [serverResponse, setServerResponse] = useState(false)
-
-    const innerEveryFunc = (currentValue) => {
-        if (currentValue) {
-            return false
-        } else {
-            return true
-        }
-    }
 
     const submitHandler = async (e) => {
 
@@ -148,8 +140,27 @@ const Contact = () => {
 
         e.preventDefault()
 
+        const checkErrors = (currentValue) => {
+            if (currentValue) {
+                return false
+            } else {
+                return true
+            }
+        }
+
+        const checkEmptiness = (currentValue) => {
+
+            if (currentValue === '') {
+                console.log("checkEmptiness -> currentValue", currentValue)
+                return true
+            } else {
+                return false
+            }
+
+        }
+
         //object.every returns true if every values in the targeted object are true
-        if (Object.values(errors).every(innerEveryFunc)) {
+        if (Object.values(errors).every(checkErrors) && !Object.values(mailObject).every(checkEmptiness)) {
             setServerResponse("")
             downUp.play()
             const response = await axios.post('/api/sendMail', mailObject)
@@ -166,7 +177,12 @@ const Contact = () => {
             }, 5000)
 
             // response ? onSuccess() : null
+
+        } else if (Object.values(mailObject).every(checkEmptiness)) {
+            setErrorsTop('45%')
+            errorMessageBind.setErrorMessage('Veuillez saisir des informations de contact dans les champs de saisie')
         } else {
+            errorMessageBind.setErrorMessage('Veuillez corriger ou compléter les champs suivants:')
             setErrorsTop('45%')
             errors.first ? setErrorText(Object.assign(errorText, {first: 'Prénom'})) : setErrorText(Object.assign(errorText, {first: ''}))
             errors.last ? setErrorText(Object.assign(errorText, {last: 'Nom'})) : setErrorText(Object.assign(errorText, {last: ''}))
@@ -180,6 +196,7 @@ const Contact = () => {
 
             <Message
             bckgColor={'#df1515'}
+            message={errorMessageBind.value}
             object={errorText}
             top={errorsTop}
             ClickProp={() => {setErrorsTop('-100%')}}

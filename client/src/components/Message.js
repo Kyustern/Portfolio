@@ -3,13 +3,7 @@ import Styled from 'styled-components'
 
 import Button from './Button'
 
-// const Inner = Styled.div`
-//     background-color: #df1515;
-//     margin: auto;
-//     font-size: 150%;
-// `
-
-const Message = ({ object, top, ClickProp, bckgColor }) => {
+const Message = ({ object, top, ClickProp, bckgColor, message }) => {
     const Inner = Styled.div`
     background-color: ${bckgColor};
     margin: auto;
@@ -39,20 +33,20 @@ const Message = ({ object, top, ClickProp, bckgColor }) => {
     `
 
     return (
-            <Wrapper>
-                <Inner>
-                    <H3>Veuillez corriger ou compléter les champs suivants:</H3>
-                    <ul>
-                        {Object.values(object).map((element, index) => {
-                            if (element) {
-                                return (<li key={index}>{element}</li>)
-                            }
-                            return null
-                        })}
-                    </ul>
-                    <Button onClick={ClickProp}>[X]</Button>
-                </Inner>
-            </Wrapper>
+        <Wrapper>
+            <Inner>
+                <H3>{message}</H3>
+                <ul>
+                    {Object.values(object).map((element, index) => {
+                        if (element) {
+                            return (<li key={index}>{element}</li>)
+                        }
+                        return null
+                    })}
+                </ul>
+                <Button onClick={ClickProp}>[X]</Button>
+            </Inner>
+        </Wrapper>
     )
 }
 

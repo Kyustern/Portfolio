@@ -1,31 +1,30 @@
 import React from 'react'
 import Styled from 'styled-components'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Header from './Header'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
-import NSFW from './pages/Nsfw'
+// import NSFW from './pages/Nsfw'
+import NotFound from './pages/NotFound'
 
 const App = () => {
     return (
         <Wrapper>
             <BrowserRouter>
-                {/* <div> */}
                 <Header></Header>
                 <Separator />
                 <Main>
-                    <Route path="/" exact render={()=><Home/>} />
-                    <Route path="/projets" render={()=><Projects/>} />
-                    <Route path="/contact" render={()=><Contact/>} />
-                    <Route path="/nsfw" render={()=><NSFW/>} />
+                    <Switch>
+                        <Route path="/" exact render={() => <Home />} />
+                        <Route path="/projets" render={() => <Projects />} />
+                        <Route path="/contact" render={() => <Contact />} />
+                        <Route path="*" render={() => <NotFound/> } />
+                        {/* <Route path="/nsfw" render={() => <NSFW />} /> */}
+                    </Switch>
                 </Main>
-                {/* </div> */}
             </BrowserRouter>
-            {/* <Footer>
-            <Separator style={{"position": "fixed"}}/>
-        </Footer> */}
         </Wrapper>
 
     )

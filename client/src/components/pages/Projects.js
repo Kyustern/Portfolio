@@ -23,7 +23,7 @@ const Projects = () => {
 
     const getData = async () => {
         const response = await axios.get('/api/getProjects')
-        console.log(response.data);
+        console.log("getData -> response", response)
         setDistantData(response.data)
     }
 
@@ -37,8 +37,6 @@ const Projects = () => {
                 distantData ?
                     // Object.values(distantData).map((iteration, index) => {
                     distantData.map((iteration, index) => {
-                        console.log("Projects -> iteration", iteration.imgUrl)
-                        console.log(index);
                         
                         return (<Card
                             key={index}

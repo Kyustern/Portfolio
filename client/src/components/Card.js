@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 import SvgButton from './SvgButton'
 
@@ -83,10 +82,6 @@ const TagsContainer = Styled.div`
 //Actual component
 
 const Card = ({ img, imgUrl, text, title, isHosted, tags, width, repoUrl, hostingUrl }) => {
-
-    // useEffect(() => {
-    //     console.log("Card -> imgUrl", imgUrl)
-    // }, [])
 
     return (
         <Wrapper>
