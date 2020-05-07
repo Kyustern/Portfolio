@@ -14,16 +14,22 @@ router.get('/getProjects', (req, res) => {
         useUnifiedTopology: true
     });
 
-    mongoClient.connect(async (err) => {
-        if(err) {console.log(err)}
+    try {
+        mongoClient.connect(async (err) => {
+            if(err) {console.log(err)}
+    
+            const data = await mongoClient.db('portfolio').collection('projets').find().toArray()
+    
+            mongoClient.close().then(() => {
+                res.send(data)
+            })
+        })        
+    } catch (error) {
+        console.log("error", error)
+        res.sendStatus(500)
+    }
 
-        const data = await mongoClient.db('portfolio').collection('projets').find().toArray()
 
-        mongoClient.close().then(() => {
-            res.send(data)
-        })
-
-    })
 })
 
 module.exports = router
