@@ -15,7 +15,7 @@ router.get('/getProjects', (req, res) => {
     });
 
     mongoClient.connect(async (err) => {
-        console.assert(!err, 'Connection error')
+        if(err) {console.log(err)}
 
         const data = await mongoClient.db('portfolio').collection('projets').find().toArray()
 
