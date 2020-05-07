@@ -20,9 +20,7 @@ router.get('/getProjects', (req, res) => {
         const data = await mongoClient.db('portfolio').collection('projets').find().toArray()
 
         mongoClient.close().then(() => {
-            
             res.send(data)
-
         })
 
     })
