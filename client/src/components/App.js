@@ -6,27 +6,30 @@ import Header from './Header'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
-// import NSFW from './pages/Nsfw'
+import Auth from './pages/Auth'
 import NotFound from './pages/NotFound'
+
+import { AuthProvider } from '../contexts/AuthContext'
 
 const App = () => {
     return (
         <Wrapper>
             <BrowserRouter>
+            <AuthProvider>
                 <Header></Header>
                 <Separator />
                 <Main>
-                    <Switch>
-                        <Route path="/" exact render={() => <Home />} />
-                        <Route path="/projets" render={() => <Projects />} />
-                        <Route path="/contact" render={() => <Contact />} />
-                        <Route path="*" render={() => <NotFound/> } />
-                        {/* <Route path="/nsfw" render={() => <NSFW />} /> */}
-                    </Switch>
+                        <Switch>
+                            <Route path="/" exact render={() => <Home />} />
+                            <Route path="/projets" render={() => <Projects />} />
+                            <Route path="/contact" render={() => <Contact />} />
+                            <Route path="/auth" render={() => <Auth />} />
+                            <Route path="*" render={() => <NotFound />} />
+                        </Switch>
                 </Main>
+                </AuthProvider>
             </BrowserRouter>
         </Wrapper>
-
     )
 }
 
@@ -34,6 +37,7 @@ const Main = Styled.div`
     width: 95%;
     /* height: 100%; */
     margin: 30px auto 30px auto;
+    
 
     /* display: flex; */
 `
@@ -47,7 +51,7 @@ const Wrapper = Styled.div`
     }
 
 /* This wraps the entire application, so its kind of important */
-
+    overflow-y: scroll;
     margin: 0;
     width: 100%;
     height: 100%;

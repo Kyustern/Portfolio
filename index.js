@@ -1,11 +1,3 @@
-// const lol = {
-//     décembre: "0",
-//     janvier: "226.78",
-//     février: "209.33",
-//     mars: "632.07‬",
-//     avril: 312.09
-// }
-
 //Routes import
 const getProjects = require('./routes/getProjects')
 const sendMail = require('./routes/sendMail')
@@ -14,6 +6,8 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const path = require('path')
+const https = require('https')
+const fs = require('fs')
 
 const port = process.env.PORT || 3001;
 // const port = 3000
@@ -35,6 +29,10 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 })
 
-app.listen(port, function () {
+https.createServer({
+    key: fs.readFileSync('./https/key.pem'),
+    cert: fs.readFileSync('./https/cert.pem')
+}, app)
+.listen(port, function () {
     console.log('Server listening on ' + port)
 })

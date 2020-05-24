@@ -1,5 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
+import { useLocation } from 'react-router-dom'
 
 const FourOFourWrapper = Styled.div`
     width: 100%;
@@ -12,6 +13,7 @@ const FourOFourWrapper = Styled.div`
 
 const ASCII = Styled.pre`
     font-size: 1.5vw;
+    /* font-size: 0.3vw; */
     width: fit-content;
     margin: auto;
 `
@@ -25,39 +27,38 @@ const ErrorMessage = Styled.div`
     padding-right: 1rem;
 `
 
+// eslint-disable-next-line
+const text = String.raw`
+____________/\\\________/\\\\\\\\______________/\\\____        
+ __________/\\\\\______/\\\/////\\\___________/\\\\\____       
+  ________/\\\/\\\_____/\\\____\//\\\________/\\\/\\\____      
+   ______/\\\/\/\\\____\/\\\_____\/\\\______/\\\/\/\\\____     
+    ____/\\\/__\/\\\____\/\\\_____\/\\\____/\\\/__\/\\\____    
+     __/\\\\\\\\\\\\\\\\_\/\\\_____\/\\\__/\\\\\\\\\\\\\\\\_   
+      _\///////////\\\//__\//\\\____/\\\__\///////////\\\//__  
+       ___________\/\\\_____\///\\\\\\\/_____________\/\\\____ 
+        ___________\///________\///////_______________\///_____
+`
+
 // const Fuck = Styled.div`
 //     font-size: 400%;
 //     margin: auto;
 //     margin-top: 3rem;
 // `
 
-const NotFound = (props) => {
+const NotFound = () => {
 
-    console.log(props);
-    
+    // const url = useLocation()
 
     return (
         <FourOFourWrapper>
 
             <ASCII>
-
-{
-//looks ugly cuz i had to escape backslashes, but it works fine
-`
-$$\\   $$\\        $$$$$$\\        $$\\   $$\\ 
-$$ |  $$ |      $$$ __$$\\       $$ |  $$ |
-$$ |  $$ |      $$$$\\ $$ |      $$ |  $$ |
-$$$$$$$$ |      $$\\$$\\$$ |      $$$$$$$$ |
-\\_____$$ |      $$ \\$$$$ |      \\_____$$ |
-      $$ |      $$ |\\$$$ |            $$ |
-      $$ |      \\$$$$$$  /            $$ |
-      \\__|       \\______/             \\__|
-`
-}
+                {text}
             </ASCII>
 
             <ErrorMessage>
-                Désolé, mais il semblerait que la page demandée ( {window.location.pathname} ) n'existe pas. Arrêtez d'écrire des truc au pif dans l'url svp.
+                Désolé, mais il semblerait que la page demandée ( {useLocation().pathname} ) n'existe pas. Arrêtez d'écrire des truc au pif dans l'url svp.
             </ErrorMessage>
 
             {/* <Fuck>

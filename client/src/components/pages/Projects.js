@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Styled from 'styled-components'
 import axios from 'axios'
 
 import Card from '../Card'
 import Lol from '../ActualSpinner'
-// import data from '../../projectData'
+import { AuthContext } from '../../contexts/AuthContext'
 
 const Wrapper = Styled.div`
     width: 90%;
@@ -18,6 +18,8 @@ const Wrapper = Styled.div`
 `
 
 const Projects = () => {
+
+    // const value = useContext(AuthContext)
 
     const [distantData, setDistantData] = useState(null)
 

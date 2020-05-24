@@ -1,5 +1,6 @@
 import React from 'react'
-import Styled from 'styled-components'
+import Styled, { keyframes } from 'styled-components'
+// import anime from 'animejs'
 
 import FancyButton from './FancyReactRouterButtonV2'
 import SvgButton from './SvgButton'
@@ -8,8 +9,6 @@ import SvgButton from './SvgButton'
 import SvgInsta from './svgr/Insta'
 import SvgFacebook from './svgr/Facebook'
 import SvgGithub from './svgr/Github'
-
-import '../css/HeaderStyle.css'
 
 const Wrapper = Styled.div`
     width: 100%;
@@ -27,15 +26,27 @@ const Wrapper = Styled.div`
     grid-row-gap: 0px; 
 `
 
-const HeaderTitle = Styled.div`
+const TitleRack = Styled.div`
     left: 0;
     color : #ededed;
-    text-shadow: 1px 1px 20px white;
     display: flex;
     flex-direction: column;
     width: 50%;
     padding-left: 20px;
     height: 100%;
+
+    @media (max-width: 900px) {
+        width: 100% !important;
+    }
+`
+
+const MainTitle = Styled.h1`
+    text-shadow: 2px 2px 0px red;
+    text-align: center;
+`
+
+const SubTitle = Styled.h4`
+    text-align: center;
 `
 
 const ButtonRack = Styled.div`
@@ -60,13 +71,13 @@ const SvgWrapper = Styled.div`
 const Header = () => {
     return (
         <Wrapper>
-                <HeaderTitle className='headerTitle'>
-                    <h1 style={{'textAlign': 'center'}}>
+                <TitleRack>
+                    <MainTitle>
                         {'</'}LéonTescher{'>'}
-                    </h1>
-                    <h4 style={{'textAlign': 'center'}}>
+                    </MainTitle>
+                    <SubTitle className='animeTarget'>
                         Développeur web
-                    </h4>
+                    </SubTitle>
                     <SvgWrapper>
                         <SvgButton url='https://github.com/Kyustern'>
                             <SvgGithub height="100%" width="45px" />
@@ -78,7 +89,7 @@ const Header = () => {
                             <SvgFacebook height="100%" width="45px" />
                         </SvgButton>
                     </SvgWrapper>
-                </HeaderTitle>
+                </TitleRack>
             <ButtonRack>
                 <FancyButton text='Accueil' to='/' exact={true} />
                 <FancyButton text='Projets' to='/projets' />
