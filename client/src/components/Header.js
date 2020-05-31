@@ -1,6 +1,5 @@
 import React from 'react'
 import Styled, { keyframes } from 'styled-components'
-// import anime from 'animejs'
 
 import FancyButton from './FancyReactRouterButtonV2'
 import SvgButton from './SvgButton'
@@ -40,9 +39,22 @@ const TitleRack = Styled.div`
     }
 `
 
+const lol = keyframes`
+  from {
+    text-shadow: 0px 0px 0px #7d7d7d;
+    /* transform: translate(0px); */
+  }
+
+  to {
+    text-shadow: 0px 0px 20px white;
+  }
+`
+
 const MainTitle = Styled.h1`
-    text-shadow: 2px 2px 0px red;
+    text-shadow: 2px 2px 0px #7d7d7d;
     text-align: center;
+
+    animation: ${lol} 5s linear infinite alternate;
 `
 
 const SubTitle = Styled.h4`
@@ -94,7 +106,6 @@ const Header = () => {
                 <FancyButton text='Accueil' to='/' exact={true} />
                 <FancyButton text='Projets' to='/projets' />
                 <FancyButton text='Contact' to='/contact' />
-                {/* <FancyButton text='Homework Folder' to='/nsfw' /> */}
             </ButtonRack>
 
         </Wrapper>

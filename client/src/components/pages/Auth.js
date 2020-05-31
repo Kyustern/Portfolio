@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react'
-import anime from 'animejs'
 
 import Styled from 'styled-components'
 import Loader from '../ActualSpinner'
@@ -17,12 +16,10 @@ const Auth = () => {
     const {
         isSigned,
         setIsSigned,
-        authInstance
+        authInstance,
+        currentUser,
+        setCurrentUser
     } = useContext(AuthContext)
-    
-    // useEffect(() => {
-    //     console.log("Auth -> authInstance", authInstance)
-    // }, [])
 
     const [errorsTop, setErrorsTop] = useState('-100%')
     const [errorCode, setErrorCode] = useState('AAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
@@ -39,14 +36,17 @@ const Auth = () => {
             setErrorsTop('45%')
             setErrorCode(err)
         })
+        
+        setCurrentUser(authInstance.currentUser.get())
     }
 
     const logOut = () => {
-        setIsSigned(false)
         authInstance.signOut()
         .then(() => {
             setIsSigned(false)
         })
+        setCurrentUser(null)
+
     }
 
 
@@ -54,6 +54,7 @@ const Auth = () => {
         <Wrapper>
             {
                 authInstance ?
+
                     isSigned ?
 
                         <Button
@@ -73,7 +74,6 @@ const Auth = () => {
                         >
                             [Log In]
                         </Button>
-
                     :
                     <Loader></Loader>
             }

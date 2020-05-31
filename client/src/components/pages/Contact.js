@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import Styled from 'styled-components'
 import axios from 'axios'
 import anime from 'animejs'
@@ -9,10 +9,7 @@ import useFormValidation from '../../hooks/useFormValidation'
 //Components
 import Message from '../Message'
 import ResponseInfo from '../ResponseInfo'
-
-//CSS
-import '../../css/Contact.css'
-
+import {Input, MultiLineInput} from '../styledComponents/inputs'
 
 const Wrapper = Styled.form`
     display: flex;
@@ -24,52 +21,15 @@ const Wrapper = Styled.form`
     transition-property: all;
     transition-duration: 0.5s;
     transition-timing-function: cubic-bezier(.53,.2,1,.69);
-`
-const Input = Styled.input`
-    height: 35px;
-    width: 70%;
-    font-size: 25px;
-    text-align: center;
-    font-family: 'VT323', monospace;
-    color: white;
-    border: solid white 0px;
-    border-bottom: solid white 3px;
-    background-color: #2a2a2a;
 
-    transition-property: all;
-    transition-duration: 0.5s;
-    transition-timing-function: cubic-bezier(.26,.54,.38,1);
-
-    ${this}:focus {
-        border-bottom: solid #1878d6 3px;
-        ::placeholder {
-            color: transparent;
-        }
+    @media (max-width: 900px) {
+    input {
+        width: 100% !important;
     }
-`
 
-const MultiLineInput = Styled.textarea`
-    /* margin-top: 30px; */
-    height: 20rem;
-    /* border-radius: 5px; */
-    width: 70%;
-    font-size: 25px;
-    text-align: left;
-    font-family: 'VT323', monospace;
-    color: white;
-    border: solid white 0px;
-    border-bottom: solid white 3px;
-    background-color: #2a2a2a;
-
-    transition-property: all;
-    transition-duration: 0.5s;
-    transition-timing-function: cubic-bezier(.26,.54,.38,1);
-
-    ${this}:focus {
-        border-bottom: solid #1878d6 3px;
-        ::placeholder {
-            color: transparent;
-        }
+    textarea {
+        width: 100% !important;
+    }
     }
 `
 
@@ -122,7 +82,8 @@ const Contact = () => {
         first: '',
         last: '',
         mail: '',
-        message: '' })
+        message: ''
+    })
 
     const [errorsTop, setErrorsTop] = useState('-100%')
 
@@ -164,10 +125,10 @@ const Contact = () => {
             setServerResponse("")
             downUp.play()
             const response = await axios.post('/api/sendMail', mailObject)
-            
+
             setServerResponse(response.data.text)
 
-            if(response.data.success) {
+            if (response.data.success) {
                 reset()
             }
 
@@ -184,10 +145,10 @@ const Contact = () => {
         } else {
             errorMessageBind.setErrorMessage('Veuillez corriger ou compléter les champs suivants:')
             setErrorsTop('45%')
-            errors.first ? setErrorText(Object.assign(errorText, {first: 'Prénom'})) : setErrorText(Object.assign(errorText, {first: ''}))
-            errors.last ? setErrorText(Object.assign(errorText, {last: 'Nom'})) : setErrorText(Object.assign(errorText, {last: ''}))
-            errors.mail ? setErrorText(Object.assign(errorText, {mail: 'Adresse Mail'})) : setErrorText(Object.assign(errorText, {mail: ''}))
-            errors.message ? setErrorText(Object.assign(errorText, {message: 'Message'})) : setErrorText(Object.assign(errorText, {mail: ''}))
+            errors.first ? setErrorText(Object.assign(errorText, { first: 'Prénom' })) : setErrorText(Object.assign(errorText, { first: '' }))
+            errors.last ? setErrorText(Object.assign(errorText, { last: 'Nom' })) : setErrorText(Object.assign(errorText, { last: '' }))
+            errors.mail ? setErrorText(Object.assign(errorText, { mail: 'Adresse Mail' })) : setErrorText(Object.assign(errorText, { mail: '' }))
+            errors.message ? setErrorText(Object.assign(errorText, { message: 'Message' })) : setErrorText(Object.assign(errorText, { mail: '' }))
         }
     }
 
@@ -195,11 +156,11 @@ const Contact = () => {
         <Wrapper>
 
             <Message
-            bckgColor={'#df1515'}
-            message={errorMessageBind.value}
-            object={errorText}
-            top={errorsTop}
-            ClickProp={() => {setErrorsTop('-100%')}}
+                bckgColor={'#df1515'}
+                message={errorMessageBind.value}
+                object={errorText}
+                top={errorsTop}
+                ClickProp={() => { setErrorsTop('-100%') }}
             ></Message>
 
             <ResponseInfo class='responseInfo'>{serverResponse}</ResponseInfo>
