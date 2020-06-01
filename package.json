@@ -7,7 +7,6 @@
     "dev": "code . && concurrently \"nodemon index.js\" \"npm start --prefix ./client\"",
     "dev-nowebpack": "node index.js",
     "inst": "npm install && cd ./client && npm install"
-    // "build": "cd ./client && npm run build"
   },
   "author": "",
   "license": "ISC",
