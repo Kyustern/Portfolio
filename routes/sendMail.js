@@ -20,8 +20,6 @@ let mailOptions = {
 }
 
 router.post('/sendMail', (req, res) => {
-
-    
     const {text, from, first, last} = req.body
     const finalString =
 //this is not indented because tabs are rendered in the string result

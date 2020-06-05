@@ -24,9 +24,7 @@ export const Input = Styled.input`
 `
 
 export const MultiLineInput = Styled.textarea`
-    /* margin-top: 30px; */
     height: 20rem;
-    /* border-radius: 5px; */
     width: 70%;
     font-size: 25px;
     text-align: left;

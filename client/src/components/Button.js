@@ -1,7 +1,7 @@
 import React from 'react'
 import Styled from 'styled-components'
 
-const Button = ({fSize, children, onClick}) => {
+const Button = ({fSize, children, onClick, styling}) => {
 
     const Butt = Styled.div`
     width: fit-content;
@@ -18,6 +18,7 @@ const Button = ({fSize, children, onClick}) => {
         background-color: white;
         cursor: pointer;
     }
+    ${styling}
     `
 
     return(

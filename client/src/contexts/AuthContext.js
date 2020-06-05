@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react'
 
 
 export const AuthContext = createContext({
-    isSigned: false
+    isSigned: null
 })
 
 export const AuthProvider = (props) => {
@@ -32,7 +32,7 @@ export const AuthProvider = (props) => {
 
     }, [])
 
-    const [isSigned, setIsSigned] = useState(false)
+    const [isSigned, setIsSigned] = useState(true)
     const [authInstance, setAuthInstance] = useState(null)
     const [currentUser, setCurrentUser] = useState(null)
 

@@ -25,7 +25,9 @@ router.get('/getProjects', (req, res) => {
         })        
     } catch (error) {
         console.log("error", error)
-        res.sendStatus(500)
+        res.status(500)
+        res.send(error)
+        // res.sendStatus(500)
     }
 
 

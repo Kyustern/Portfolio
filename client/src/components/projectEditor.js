@@ -1,43 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import Styled from 'styled-components'
 
 import {Input, MultiLineInput} from '../components/styledComponents/inputs'
 import useInputValidation from '../hooks/useInputValidation'
 
-const FullscreenWrapper = Styled.div`
-    position: absolute;
-		top:0;
-		left: 0;
-		margin:0;
-		padding:0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
+import TagList from './TagList'
 
-const FormWrapper = Styled.div`
-	margin-left: auto;
-  margin-right: auto;
-  position: absolute;
-  width: 50%;
-  height: 70%;
-  background-color: #CECECF;
-  border-radius: 20px;
-  transition-duration: 0.5s;
-  transition-property: all;
-  transition-timing-function: ease;
-  ${this}:hover {
-    border-radius: 5px;
-  }
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: space-evenly;
-`
+const emptyRegEx = new RegExp(/\A\s*\z/)
 
 const cbTest = (input, setCurrentValue, setIsValid) => {
     if (input === 'aaa') {
@@ -49,15 +18,97 @@ const cbTest = (input, setCurrentValue, setIsValid) => {
 
 const ProjectEditor = () => {
 
-    const [nameIsValid, nameBinding] = useInputValidation(cbTest, "")
+    const [tags, setTags] = useState()
+
+    const [nameIsValid, nameBinding] = useInputValidation(emptyRegEx, "", false)
 
 	return (
 		<FullscreenWrapper>
 			<FormWrapper>
-                <Input id='first' className='input' type="text" placeholder='Projet:Nom' {...nameBinding} ></Input>
+                <InputWrapper>
+                    <NewInput type="text" placeholder='Projet:Nom' {...nameBinding} ></NewInput>
+                    <NewMultilineInput type="text" placeholder='Projet:Description' {...nameBinding} ></NewMultilineInput>
+                </InputWrapper>
+                <TagsWrapper>
+                    aaa
+                </TagsWrapper>
+                <TagList>
+
+                </TagList>
 			</FormWrapper>
 		</FullscreenWrapper>
 	)
 }
+
+const TagsWrapper = Styled.p`
+    width: 90%;
+`
+
+const NewInput = Styled(Input)`
+    border-bottom: solid #CECECF 3px;
+
+`
+const NewMultilineInput = Styled(MultiLineInput)`
+    border-bottom: solid #CECECF 3px;
+
+`
+
+const FullscreenWrapper = Styled.div`
+    position: absolute;
+		top:0;
+		left: 0;
+		margin:0;
+		padding:0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+`
+
+const FormWrapper = Styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 70%;
+  background-color: #CECECF;
+  border-radius: 2px;
+  transition-duration: 0.5s;
+  transition-property: all;
+  transition-timing-function: ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    input {
+        /* width: 90% !important; */
+    }
+
+    textarea {
+        /* width: 90% !important; */
+    }
+
+    width: 90%;
+    }
+`
+
+const InputWrapper = Styled.div`
+  width: 100%;
+  height: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 export default ProjectEditor

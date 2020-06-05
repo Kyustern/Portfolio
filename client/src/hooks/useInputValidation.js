@@ -1,25 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const useInputValidation = (validationCallback, initialValue, regex, reverseRegex) => {
+const useInputValidation = (condition, initialValue, reverseRegex) => {
 
     const [currentValue, setCurrentValue] = useState(initialValue)
     const [isValid, setIsValid] = useState(false)
 
-    const regexValidation = (input) => {
-        if (regex.test(input)) {
-            
+    useEffect(() => {
+        
+    }, [])
+
+    // const isRegex = () => condition.typeof == 'function' ? false : true
+
+    const verifierFunc = condition.typeof == 'function' ? 
+        condition 
+        : 
+        (input) => {
+            setCurrentValue(input)
+            if (condition.test(input)) {
+                console.log('condition verified');
+                
+                reverseRegex ? setIsValid(false) : setIsValid(true)
+            } else {
+                reverseRegex ? setIsValid(true) : setIsValid(true)
+            }
         }
-    }
 
     const binding = {
         currentValue,
-        onChange: e => {
-            if (regex) {
-                regexValidation(e.target.value)
-            } else {
-                validationCallback(e.target.value, setCurrentValue, setIsValid)
-            }
-        }
+        onChange: e => {verifierFunc(e.target.value, setCurrentValue, setIsValid)}
     }
 
     return [

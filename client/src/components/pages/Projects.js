@@ -7,7 +7,8 @@ import history from '../../history'
 import ProjectEditor from '../projectEditor'
 import TextButton from '../Button'
 import Card from '../Card'
-import Lol from '../ActualSpinner'
+import Loading from '../ActualSpinner'
+import RequestFailed from '../SimpleError'
 import { AuthContext } from '../../contexts/AuthContext'
 
 const Wrapper = Styled.div`
@@ -34,12 +35,22 @@ const Projects = () => {
         isSigned
     } = useContext(AuthContext)
 
-    const [distantData, setDistantData] = useState(null)
+    const [response, setResponse] = useState(null)
 
     const getData = async () => {
-        const response = await axios.get('/api/getProjects')
-        setDistantData(response.data)
+        const temp = await axios.get('/api/getProjects')
+        // console.log(temp);
+        console.log("getData -> temp", temp)
+        
+        setResponse(temp)
     }
+    
+    const refresh = () => {
+        console.log('AAAAAAAAAAAAAAAAuihhhhhhhhhhhhhfjth');
+        history.push('/projets/nouveau')
+        
+    }
+    
 
     useEffect(() => {
         getData()
@@ -47,30 +58,33 @@ const Projects = () => {
 
     return (
         <Wrapper>
+            <RequestFailed
+                errorText='aaa'
+                buttonText='teeexte du boutoooon'
+                clickHandler={() => {refresh()}}
+            />
             {
-                distantData ?
-                    // Object.values(distantData).map((iteration, index) => {
-                    distantData.map((iteration, index) => {
-
-                        return (<Card
-                            key={index}
-                            imgUrl={iteration.imgUrl}
-                            img={iteration.image}
-                            alt=""
-                            width={iteration.width ? iteration.width : "95%"}
-                            text={iteration.text}
-                            title={iteration.title}
-                            isHosted={iteration.isHosted}
-                            tags={iteration.tags}
-                            repoUrl={iteration.repoUrl}
-                            hostingUrl={iteration.hostingUrl}
-                        />)
-                    })
-                    :
-                    <Lol/>
+                // response.data ?
+                //     response.data.map((iteration, index) => {
+                //         return (<Card
+                //             key={index}
+                //             imgUrl={iteration.imgUrl}
+                //             img={iteration.image}
+                //             alt=""
+                //             width={iteration.width ? iteration.width : "95%"}
+                //             text={iteration.text}
+                //             title={iteration.title}
+                //             isHosted={iteration.isHosted}
+                //             tags={iteration.tags}
+                //             repoUrl={iteration.repoUrl}
+                //             hostingUrl={iteration.hostingUrl}
+                //         />)
+                //     })
+                //     :
+                //     <Loading/>
             }
             {
-                isSigned && distantData ?
+                isSigned && response ?
                     <AddProjectWrapper>
                         <TextButton
                             fSize={'200%'}
@@ -84,10 +98,10 @@ const Projects = () => {
                     :
                     null
             }
-            {/* <Route
+            <Route
                 path='/projets/(nouveau|editer)'
                 render={() => <ProjectEditor/>}
-            /> */}
+            />
         </Wrapper>
     )
 }

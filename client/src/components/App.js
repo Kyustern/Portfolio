@@ -24,7 +24,7 @@ const App = () => {
                             <Route path="/" exact render={() => <Home />} />
                             <Route path="/projets" render={() => <Projects />} />
                             <Route path="/contact" render={() => <Contact />} />
-                            {/* <Route path="/auth" render={() => <Auth />} /> */}
+                            <Route path="/auth" render={() => <Auth />} />
                             <Route path="*" render={() => <NotFound />} />
                         </Switch>
                     </Main>
