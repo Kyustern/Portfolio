@@ -9,6 +9,8 @@ import useFormValidation from '../../hooks/useFormValidation'
 //Components
 import Message from '../Message'
 import ResponseInfo from '../ResponseInfo'
+
+import InputLabel from '../styledComponents/label'
 import {Input, MultiLineInput} from '../styledComponents/inputs'
 
 const Wrapper = Styled.form`
@@ -55,18 +57,6 @@ const SendButton = Styled.input`
         text-shadow : 1px 1px 5px white;
         /* box-shadow : 1px 1px 1px white; */
     }
-`
-const InputLabel = Styled.label`
-    height: 1rem;
-    margin-bottom: 10px;
-    margin-top: 20px;
-    font-size: 100%;
-    text-align: center;
-    font-family: 'VT323', monospace;
-    color: #A82C2C;
-    transition-property: color;
-    transition-duration: 0.5s;
-    transition-timing-function: cubic-bezier(.26,.54,.38,1);
 `
 
 const Contact = () => {

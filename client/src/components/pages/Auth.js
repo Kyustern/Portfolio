@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 
 import Styled from 'styled-components'
 import Loader from '../ActualSpinner'

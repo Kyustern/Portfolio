@@ -27,9 +27,7 @@ router.get('/getProjects', (req, res) => {
         console.log("error", error)
         res.status(500)
         res.send(error)
-        // res.sendStatus(500)
     }
-
 
 })
 

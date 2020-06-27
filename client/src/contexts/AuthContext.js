@@ -32,7 +32,7 @@ export const AuthProvider = (props) => {
 
     }, [])
 
-    const [isSigned, setIsSigned] = useState(true)
+    const [isSigned, setIsSigned] = useState(false)
     const [authInstance, setAuthInstance] = useState(null)
     const [currentUser, setCurrentUser] = useState(null)
 

@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import Styled from 'styled-components'
 import axios from 'axios'
-import { Redirect, Route, useHistory } from 'react-router-dom'
-import history from '../../history'
+import { Route, useHistory } from 'react-router-dom'
 
 import ProjectEditor from '../projectEditor'
 import TextButton from '../Button'
@@ -38,19 +37,24 @@ const Projects = () => {
     const [response, setResponse] = useState(null)
 
     const getData = async () => {
-        const temp = await axios.get('/api/getProjects')
-        // console.log(temp);
-        console.log("getData -> temp", temp)
-        
-        setResponse(temp)
+        axios.get('/api/getProjects')
+        .then((res) => {
+            console.log("getData -> res", res)
+            setResponse(res)
+        })
+        .catch((err) => {
+            console.log("getData -> err.response", err.response)
+            setResponse(err.response)
+        })
+        // console.log("getData -> temp", temp)
+        // setResponse(temp)
     }
-    
+
     const refresh = () => {
-        console.log('AAAAAAAAAAAAAAAAuihhhhhhhhhhhhhfjth');
-        history.push('/projets/nouveau')
-        
+
+
     }
-    
+
 
     useEffect(() => {
         getData()
@@ -58,33 +62,36 @@ const Projects = () => {
 
     return (
         <Wrapper>
-            <RequestFailed
-                errorText='aaa'
-                buttonText='teeexte du boutoooon'
-                clickHandler={() => {refresh()}}
-            />
             {
-                // response.data ?
-                //     response.data.map((iteration, index) => {
-                //         return (<Card
-                //             key={index}
-                //             imgUrl={iteration.imgUrl}
-                //             img={iteration.image}
-                //             alt=""
-                //             width={iteration.width ? iteration.width : "95%"}
-                //             text={iteration.text}
-                //             title={iteration.title}
-                //             isHosted={iteration.isHosted}
-                //             tags={iteration.tags}
-                //             repoUrl={iteration.repoUrl}
-                //             hostingUrl={iteration.hostingUrl}
-                //         />)
-                //     })
-                //     :
-                //     <Loading/>
+                response ?
+                    response.status === 200 ?
+                        response.data.map((iteration, index) => {
+                            return (<Card
+                                key={index}
+                                imgUrl={iteration.imgUrl}
+                                img={iteration.image}
+                                alt=""
+                                width={iteration.width ? iteration.width : "95%"}
+                                text={iteration.text}
+                                title={iteration.title}
+                                isHosted={iteration.isHosted}
+                                tags={iteration.tags}
+                                repoUrl={iteration.repoUrl}
+                                hostingUrl={iteration.hostingUrl}
+                            />)
+                        })
+
+                        :
+                        <RequestFailed
+                            errorText={`La requête vers le serveur a échouée (Code d'erreur ${response.status})`}
+                            buttonText={`Réessayer`}
+                            clickHandler={() => { refresh() }}
+                        />
+                    :
+                    <Loading />
             }
             {
-                isSigned && response ?
+                response && isSigned ?
                     <AddProjectWrapper>
                         <TextButton
                             fSize={'200%'}
@@ -95,12 +102,13 @@ const Projects = () => {
                             + Ajouter un projet
                         </TextButton>
                     </AddProjectWrapper>
-                    :
-                    null
+                :
+                null
             }
+
             <Route
                 path='/projets/(nouveau|editer)'
-                render={() => <ProjectEditor/>}
+                render={() => <ProjectEditor />}
             />
         </Wrapper>
     )

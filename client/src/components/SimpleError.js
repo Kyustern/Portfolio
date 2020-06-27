@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import Button from './Button'
-
 const Wrapper = styled.div`
   background-color: #DF1515;
   width: 100%;
