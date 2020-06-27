@@ -3,7 +3,7 @@ import Styled from 'styled-components'
 const SvgContainer = Styled.div`
 display: flex;
 align-items: center;
-overflow-x: scroll;
+overflow-x: auto;
 overflow-y: hidden;
 width: 100%;
 height: auto;

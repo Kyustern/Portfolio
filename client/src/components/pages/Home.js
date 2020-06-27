@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import SvgContainer from '../SvgContainer'
+import SvgContainer from '../styledComponents/SvgContainer'
 import SvgButton from '../SvgButton'
 
 import SvgHtml5 from '../svgr/Html5'
@@ -101,14 +101,6 @@ const Home = () => {
                 </SvgButton>
             </NewSvgCont>
 
-            {/* <Bars className='Bars'>
-                <Bar progression="80" text="HTML5" />
-                <Bar progression="70" text="CSS3" />
-                <Bar progression="60" text="JavaScript" />
-                <Bar progression="70" text="ReactJS" />
-                <Bar progression="50" text="NodeJS" />
-                <Bar progression="50" text="Unix (Kali Linux)" />
-            </Bars> */}
         </Wrapper>
     )
 }
