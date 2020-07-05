@@ -9,6 +9,7 @@ import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import Auth from './pages/Auth'
 import NotFound from './pages/NotFound'
+import Exp from './pages/Exp'
 
 import { AuthProvider } from '../contexts/AuthContext'
 
@@ -25,6 +26,7 @@ const App = () => {
                             <Route path="/projets" render={() => <Projects />} />
                             <Route path="/contact" render={() => <Contact />} />
                             <Route path="/auth" render={() => <Auth />} />
+                            <Route path="/experiences" render={() => <Exp />} />
                             <Route path="*" render={() => <NotFound />} />
                         </Switch>
                     </Main>

@@ -21,6 +21,7 @@ const emptyCheck = (input, setCurrentValue, setIsValid) => {
 
 const ProjectEditor = () => {
 
+    const [gitIsValid, gitBinding] = useInputValidation(emptyCheck, "", false)
     const [nameIsValid, nameBinding] = useInputValidation(emptyCheck, "", false)
     const [descIsValid, descBinding] = useInputValidation(emptyCheck, "", false)
     const [tagsArray, setTagsArray] = useState([
@@ -34,6 +35,7 @@ const ProjectEditor = () => {
         <FullscreenWrapper>
             <FormWrapper>
                 <InputWrapper>
+                    <NewInput type="text" placeholder='Projet:Repo' {...nameBinding} ></NewInput>
                     <NewInput type="text" placeholder='Projet:Nom' {...nameBinding} ></NewInput>
                     <NewMultilineInput type="text" placeholder='Projet:Description' {...descBinding} ></NewMultilineInput>
                 </InputWrapper>

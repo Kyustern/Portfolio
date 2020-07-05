@@ -105,6 +105,7 @@ const Header = () => {
             <ButtonRack>
                 <FancyButton text='Accueil' to='/' exact={true} />
                 <FancyButton text='Projets' to='/projets' />
+                <FancyButton text='Parcour' to='/experiences' />
                 <FancyButton text='Contact' to='/contact' />
             </ButtonRack>
 

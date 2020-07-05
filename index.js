@@ -1,6 +1,9 @@
 //Routes import
 const getProjects = require('./routes/getProjects')
 const sendMail = require('./routes/sendMail')
+const signIn = require('./routes/signIn')
+//middlewares
+const getPrivilege = require('./middlewares/checkRole')
 
 const express = require('express')
 const app = express()
@@ -10,11 +13,11 @@ const path = require('path')
 const port = process.env.PORT || 3001;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(bodyParser.json());
 
-app.use('/api', getProjects)
-app.use('/api', sendMail)
+app.use('/api/private', isGod)
+app.use('/api/public', getProjects)
+app.use('/api/public', sendMail)
 
 //Static folder that contains the react build
 app.use(express.static(__dirname + '/client/build'))

@@ -3,9 +3,9 @@ import Styled from 'styled-components'
 
 import Button from './Button'
 
-const Message = ({ object, top, ClickProp, bckgColor, message }) => {
+const Message = ({ object, top, ClickProp, message }) => {
     const Inner = Styled.div`
-    background-color: ${bckgColor};
+    background-color: #df1515;
     margin: auto;
     font-size: 150%;
     `
@@ -13,7 +13,8 @@ const Message = ({ object, top, ClickProp, bckgColor, message }) => {
     const Wrapper = Styled.div`
     position: absolute;
     background-color: #161616;
-    top: ${top};
+    /* top: ${top}; */
+    top: 50%;
     width: auto;
     height: auto;
     padding: 15px;

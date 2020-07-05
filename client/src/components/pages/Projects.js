@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Route, useHistory } from 'react-router-dom'
 
 import ProjectEditor from '../projectEditor'
-import TextButton from '../Button'
+import Button from '../styledComponents/button'
 import Card from '../Card'
 import Loading from '../ActualSpinner'
 import RequestFailed from '../SimpleError'
@@ -31,7 +31,7 @@ const Projects = () => {
     let history = useHistory()
 
     const {
-        isSigned
+        role
     } = useContext(AuthContext)
 
     const [response, setResponse] = useState(null)
@@ -46,8 +46,7 @@ const Projects = () => {
             console.log("getData -> err.response", err.response)
             setResponse(err.response)
         })
-        // console.log("getData -> temp", temp)
-        // setResponse(temp)
+
     }
 
     const refresh = () => {
@@ -91,16 +90,16 @@ const Projects = () => {
                     <Loading />
             }
             {
-                response && isSigned ?
+                response && role === "god" ?
                     <AddProjectWrapper>
-                        <TextButton
-                            fSize={'200%'}
+                        <Button
+                            style={{fontSize: '300%'}}
                             onClick={() => {
                                 history.push('/projets/nouveau')
                             }}
                         >
                             + Ajouter un projet
-                        </TextButton>
+                        </Button>
                     </AddProjectWrapper>
                 :
                 null

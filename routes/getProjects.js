@@ -15,14 +15,14 @@ router.get('/getProjects', (req, res) => {
 
     try {
         mongoClient.connect(async (err) => {
-            if(err) {console.log(err)}
-    
+            if (err) { console.log(err) }
+
             const data = await mongoClient.db('portfolio').collection('projets').find().toArray()
-    
+
             mongoClient.close().then(() => {
                 res.send(data)
             })
-        })        
+        })
     } catch (error) {
         console.log("error", error)
         res.status(500)
