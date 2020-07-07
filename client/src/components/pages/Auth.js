@@ -18,7 +18,8 @@ const Auth = () => {
         setIsSigned,
         authInstance,
         currentUser,
-        setCurrentUser
+        setCurrentUser,
+        role
     } = useContext(AuthContext)
 
     const [displayErr, setDisplayErr] = useState(false)
@@ -77,6 +78,9 @@ const Auth = () => {
                     :
                     <Loader></Loader>
             }
+
+            {role}
+
             {
                 displayErr ?
                 <Message

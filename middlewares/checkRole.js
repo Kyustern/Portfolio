@@ -26,8 +26,10 @@ const isAdmin = async function (req, res, next) {
                 if (alreadyExist) {
                     console.log('append res.locals');
                     res.locals.role = "god"
+                    next()
                 } else {
                     res.locals.role = "peasant"
+                    res.status(403).send('Unauthorized')
                 }
 
             })
@@ -37,9 +39,8 @@ const isAdmin = async function (req, res, next) {
             })
     } else {
         res.locals.role = "inconnu au bataillon"
+        res.status(403).send('Not logged in')
     }
-
-    next()
 };
 
 // const teub = async (googleId) => {

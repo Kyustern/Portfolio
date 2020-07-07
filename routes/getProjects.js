@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const MongoClient = require('mongodb').MongoClient
-const chalk = require('chalk')
 require('dotenv').config()
 
 const mongoUri = `mongodb+srv://${process.env.ATLAS_READONLY_USERNAME}:${process.env.ATLAS_READONLY_PASSWORD}@iprefermysql-nzjl9.mongodb.net/test?retryWrites=true&w=majority`
@@ -20,6 +19,7 @@ router.get('/getProjects', (req, res) => {
             const data = await mongoClient.db('portfolio').collection('projets').find().toArray()
 
             mongoClient.close().then(() => {
+                console.log(data);
                 res.send(data)
             })
         })

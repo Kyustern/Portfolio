@@ -36,8 +36,8 @@ const Projects = () => {
 
     const [response, setResponse] = useState(null)
 
-    const getData = async () => {
-        axios.get('/api/getProjects')
+    const getData = () => {
+        axios.get('/api/public/getProjects')
         .then((res) => {
             console.log("getData -> res", res)
             setResponse(res)
@@ -46,14 +46,7 @@ const Projects = () => {
             console.log("getData -> err.response", err.response)
             setResponse(err.response)
         })
-
     }
-
-    const refresh = () => {
-
-
-    }
-
 
     useEffect(() => {
         getData()
@@ -84,7 +77,7 @@ const Projects = () => {
                         <RequestFailed
                             errorText={`La requête vers le serveur a échouée (Code d'erreur ${response.status})`}
                             buttonText={`Réessayer`}
-                            clickHandler={() => { refresh() }}
+                            clickHandler={() => { getData() }}
                         />
                     :
                     <Loading />

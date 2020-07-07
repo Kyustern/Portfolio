@@ -21,9 +21,8 @@ export const AuthProvider = (props) => {
             })
 
             gAuth.currentUser.listen(async (currentUsr) => {
-                const role = await axios.post('/api/checkrole', currentUsr.getAuthResponse())
-                // setRole(role)
-                console.log("AuthProvider -> role", role)
+                const res = await axios.post('/api/public/signin', currentUsr.getAuthResponse())
+                setRole(res.data.role)
                 setCurrentUser(currentUsr)
             })
 
